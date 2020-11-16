@@ -1,0 +1,105 @@
+@import './variables.css';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-size-adjust: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-text);
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+
+
+}
+
+a,
+button {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a {
+  color: var(--color-primary);
+  font-family: var(--font-text);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-secondary);
+    }
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+hr {
+  border: none;
+  border-bottom: solid 1px var(--color-gray-light);
+}
+
+fieldset {
+  appearance: none;
+  border: none;
+}
+
+img,
+svg {
+  transition: all 0.3s ease;
+
+  & * {
+    transition: all 0.3s ease;
+  }
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+p {
+  font-family: var(--font-text);
+}
+
+h2 {
+  font-family: var(--font-text);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  margin: 0;
+  color: var(--color-dark);
+}
+
+input {
+  font-family: var(--font-text);
+  border: 1px solid rgba(26, 30, 93, 0.2);
+  box-sizing: border-box;
+  border-radius: 6px;
+  height: 48px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 14px;
+  color: var(--color-dark);
+  outline: none;
+}
