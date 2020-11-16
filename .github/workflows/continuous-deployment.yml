@@ -18,7 +18,10 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           script: |
-            whoami
-            ls -al
             cd /var/www/coderman.ru/data/www/leadest.coderman.ru
-            ls -la
+            git pull
+            composer install
+            php artisan migrate
+            php artisan config:cache
+            cd ..
+            chown -R coderman.ru:coderman.ru leadest.coderman.ru/
