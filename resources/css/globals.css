@@ -100,6 +100,7 @@ input {
   font-size: 14px;
   line-height: 20px;
   padding: 14px;
-  color: var(--color-dark);
+  color: var(--color-dark-dark);
   outline: none;
+
 }
