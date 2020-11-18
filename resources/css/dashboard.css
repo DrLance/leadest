@@ -1,0 +1,16 @@
+.dashboard-divider {
+  margin: 0 12px;
+}
+
+.dashboard-header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 21px;
+  color: #1A1E5D;
+}

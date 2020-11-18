@@ -14,15 +14,33 @@ class LoginController extends Controller
 {
     public function authenticate(Request $request)
     {
+        $responseData = [
+          'error'   => false,
+          'message' => 'OK',
+          'data'    => [
+            'errors' => [],
+            'url'    => '',
+          ],
+        ];
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard');
+            $responseData['data']['url'] = route('dashboard.index');
+
+            return response()->json($responseData);
         }
 
-        return redirect()->route('home')->withErrors([
-          'auth' => 'Failed login',
-        ]);
+        $responseData['error'] = true;
+        $responseData['data']  = [
+          'errors' => [
+            [
+              'message' => 'Login failed',
+            ],
+          ],
+        ];
+
+        return response()->json($responseData);
     }
 
     public function redirectToProvider()
@@ -40,14 +58,14 @@ class LoginController extends Controller
 
         $existingUser = User::where('email', $user->email)->first();
 
-        if($existingUser){
+        if ($existingUser) {
             auth()->login($existingUser, true);
         } else {
             // create a new user
             $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
-            $newUser->password = Hash::make($user->email . $user->name . 'password');
+            $newUser->password        = Hash::make($user->email . $user->name . 'password');
             $newUser->google_id       = $user->id;
             $newUser->avatar          = $user->avatar;
             $newUser->avatar_original = $user->avatar_original;

@@ -103,4 +103,8 @@ input {
   color: var(--color-dark-dark);
   outline: none;
 
+  &:focus {
+    border: 1px solid #46B3ED;
+    box-sizing: border-box;
+  }
 }
