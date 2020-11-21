@@ -3,6 +3,8 @@ import Vue from 'vue';
 import AuthComponent from "./components/Auth/AuthComponent";
 import ModalRedirectComponent from "./components/Auth/ModalRedirectComponent";
 import ResetPasswordComponent from "./components/Auth/ResetPasswordComponent";
+import MailVerificationComponent from "./components/Auth/MailVerificationComponent";
+import RegisterComponent from "./components/Auth/RegisterComponent";
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -14,6 +16,8 @@ window.axios = require('axios');
 Vue.component('auth-component', AuthComponent);
 Vue.component('auth-modal-redirect', ModalRedirectComponent);
 Vue.component('auth-reset-password', ResetPasswordComponent);
+Vue.component('auth-mail-verification', MailVerificationComponent);
+Vue.component('register-component', RegisterComponent);
 
 function validateEmail (email) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -108,3 +108,10 @@ input {
     box-sizing: border-box;
   }
 }
+
+button {
+  &:disabled {
+    color: rgba(26, 30, 93, 0.3);
+    background-color: rgba(42, 49, 150, 0.2);
+  }
+}

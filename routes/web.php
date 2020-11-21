@@ -36,15 +36,20 @@ Route::post('/reset-password',[\App\Http\Controllers\Auth\ResetPasswordControlle
 
 Route::get('password/reset/{token}', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'showForm'])->name('password.reset');
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware(['auth'])->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
+    dd($request);
+
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware(['auth'])->name('verification.notice');
+
+
 
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function (){

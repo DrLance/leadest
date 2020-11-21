@@ -21,7 +21,7 @@ jobs:
             cd /var/www/coderman.ru/data/www/leadest.coderman.ru
             git pull
             composer install
-            php artisan migrate
             php artisan config:cache
+            php artisan migrate
             cd ..
             chown -R coderman.ru:coderman.ru leadest.coderman.ru/
