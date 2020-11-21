@@ -46,11 +46,16 @@ export default {
       this.callback(false);
     },
     sendReset () {
+      this.errorMessage = '';
       if (validateEmail(this.email)) {
         axios.post('/reset-password', { email: this.email }).then(response => {
           this.errorMessage = response.data.message;
+
+          setTimeout(() => this.callback(false), 1000);
+
         }).catch(resp => {
           this.errorMessage = 'Server Error';
+          setTimeout(() => this.callback(false), 1000);
         });
       } else {
         this.errorMessage = 'Invalid Email';

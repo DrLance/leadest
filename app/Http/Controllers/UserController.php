@@ -11,17 +11,33 @@ class UserController extends Controller
 {
     public function store(Request $request)
     {
+        $responseData = [
+          'error'   => false,
+          'message' => 'OK',
+          'data'    => [
+            'errors' => [],
+            'url'    => route('home'),
+          ],
+        ];
+
         $validator = Validator::make($request->all(), [
           'email' => 'required|email|unique:users',
           'password' => 'required'
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
+
+            $responseData['error'] = true;
+
+            foreach ($validator->errors()->all() as $error) {
+                $responseData['data']['errors'][] = $error;
+            }
+
+            return response()->json($responseData);
         }
 
-        UserService::createNewUser($request->all());
+        $user = UserService::createNewUser($request->all());
 
-        return redirect()->route('home');
+        return response()->json($responseData);
     }
 }

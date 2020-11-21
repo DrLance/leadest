@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -32,13 +33,7 @@ class LoginController extends Controller
         }
 
         $responseData['error'] = true;
-        $responseData['data']  = [
-          'errors' => [
-            [
-              'message' => 'Login failed',
-            ],
-          ],
-        ];
+        $responseData['data']['errors'][] =  'Login failed';
 
         return response()->json($responseData);
     }
@@ -71,6 +66,7 @@ class LoginController extends Controller
             $newUser->avatar_original = $user->avatar_original;
             $newUser->save();
             auth()->login($newUser, true);
+            event(new Registered($newUser));
         }
 
         return redirect()->to('/dashboard');

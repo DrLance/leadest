@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <auth-modal-redirect :is-visible="isRedirect"></auth-modal-redirect>
-    <reset-password-component :is-visible="isResetPassword" :callback="showReset"></reset-password-component>
+    <auth-reset-password :is-visible="isResetPassword" :callback="showReset"></auth-reset-password>
     <div class="login-container">
       <h2 class="login-header">Log In</h2>
       <div class="container">
@@ -17,8 +17,8 @@
         <div class="alert alert-danger">
           <ul>
 
-            <li v-for="error in errors" :key="error.message" >
-              {{error.message}}
+            <li v-for="error in errors" :key="error" >
+              {{error}}
             </li>
 
           </ul>
@@ -50,12 +50,8 @@
 </template>
 
 <script>
-
-import ResetPasswordComponent from "./ResetPasswordComponent";
-
 export default {
   name: "AuthComponent",
-  components: { ResetPasswordComponent },
   data () {
     return {
       errors: [],
