@@ -14,19 +14,15 @@
 
 </head>
 <body>
-<header class="container-fluid header header-dashboard">
-  <div class="dashboard-container">
-    <div class="dashboard-header__container">
+<header class="container-fluid header">
+    <div class="leads-header__container">
       <a href="{{route('home')}}">
         <img src="{{asset('img/leadest-logo.svg')}}" alt="logo"/>
       </a>
       <div class="dashboard-link__container">
-        <a class="dashboard-link" href="/logout"><img src="/img/settings-icon.svg"  alt="settings"/>Settings</a>
-        <span class="dashboard-divider">|</span>
-        <a class="dashboard-link" href="/logout"><img src="/img/exit-icon.svg" alt="exit" />Exit</a>
+        <a class="lead-link" href="/logout">Welcome, Vitalii <img src="/img/lead-avatar.svg" alt="exit" /></a>
       </div>
     </div>
-  </div>
 </header>
 <main id="app" class="dashboard-container">
   @yield('content')

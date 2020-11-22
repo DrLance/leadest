@@ -27,7 +27,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $responseData['data']['url'] = route('dashboard.index');
+            $responseData['data']['url'] = route('home');
 
             return response()->json($responseData);
         }
@@ -69,6 +69,6 @@ class LoginController extends Controller
             event(new Registered($newUser));
         }
 
-        return redirect()->to('/dashboard');
+        return redirect()->route('home');
     }
 }

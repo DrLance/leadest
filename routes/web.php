@@ -40,9 +40,7 @@ Route::get('password/reset/{token}', [\App\Http\Controllers\Auth\ResetPasswordCo
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    dd($request);
-
-    return redirect('/home');
+    return redirect()->route('home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/email/verify', function () {
@@ -54,4 +52,12 @@ Route::get('/email/verify', function () {
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function (){
     Route::get('/',[\App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/payments',[\App\Http\Controllers\Dashboard\DashboardController::class, 'payments'])->name('dashboard.payments');
+});
+
+Route::prefix('leads')->middleware(['auth'])->group(function(){
+    Route::get('/',[\App\Http\Controllers\Leads\LeadsController::class, 'index'])->name('leads.index');
+    Route::get('/questions',[\App\Http\Controllers\Leads\LeadsController::class, 'questions'])->name('leads.questions');
+
+    Route::post('/questions',[\App\Http\Controllers\Leads\LeadsController::class, 'store'])->name('leads.questions.store');
 });

@@ -32,6 +32,7 @@ class UserController extends AdminController
         $grid->column('email', __('Email'));
         $grid->column('email_verified_at', __('Email verified at'));
         $grid->column('avatar', __('Avatar'))->image(null, 32,32);
+        $grid->column('is_agent');
         $grid->column('created_at', __('Created at'))->display(function ($item){
             $tmDate = Carbon::parse($item);
 
@@ -60,10 +61,13 @@ class UserController extends AdminController
         $show->field('name', __('Name'));
         $show->field('email', __('Email'));
         $show->field('email_verified_at', __('Email verified at'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
         $show->field('avatar', __('Avatar'))->image();
         $show->field('avatar_original', __('Avatar original'))->image();
+        $show->field('is_agent');
+        $show->field('ref');
+        $show->field('from_ref');
+        $show->field('created_at', __('Created at'));
+        $show->field('updated_at', __('Updated at'));
         return $show;
     }
 
@@ -76,11 +80,17 @@ class UserController extends AdminController
     {
         $form = new Form(new User());
 
+        $states = [
+          'on'  => ['value' => 1, 'text' => 'enable', 'color' => 'success'],
+          'off' => ['value' => 0, 'text' => 'disable', 'color' => 'danger'],
+        ];
+
         $form->text('name', __('Name'));
         $form->email('email', __('Email'));
         $form->password('password', __('Password'));
         $form->image('avatar', __('Avatar'));
         $form->image('avatar_original', __('Avatar original'));
+        $form->switch('is_agent', 'is Agent')->states($states);
 
         return $form;
     }

@@ -14,5 +14,7 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('users', UserController::class);
+    $router->resource('questions', QuestionController::class);
+    $router->resource('user-answers', UserAnswerController::class);
 
 });

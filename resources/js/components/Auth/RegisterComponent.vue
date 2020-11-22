@@ -50,7 +50,7 @@ export default {
       errors: [],
       email: '',
       password: '',
-      showVerification: true,
+      showVerification: false,
       btnDisabled: false,
     }
   },
