@@ -16,7 +16,7 @@ class UserController extends Controller
           'message' => 'OK',
           'data'    => [
             'errors' => [],
-            'url'    => route('public.login'),
+            'url'    => route('login'),
           ],
         ];
 
