@@ -83,6 +83,12 @@
     margin-right: 10px;
     fill: #1A1E5D;
   }
+
+  &:hover {
+    & svg {
+      fill: var(--color-secondary);
+    }
+  }
 }
 
 .tabs-active {

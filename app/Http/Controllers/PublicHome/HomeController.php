@@ -11,7 +11,6 @@ class HomeController extends Controller
 
         if(auth()->check()) {
 
-
             if(auth()->user()->is_agent) {
                 return redirect()->route('dashboard.index');
             } else {

@@ -8,6 +8,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends AdminController
 {
@@ -31,14 +32,14 @@ class UserController extends AdminController
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('email_verified_at', __('Email verified at'));
-        $grid->column('avatar', __('Avatar'))->image(null, 32,32);
+        $grid->column('avatar', __('Avatar'))->image(null, 32, 32);
         $grid->column('is_agent');
-        $grid->column('created_at', __('Created at'))->display(function ($item){
+        $grid->column('created_at', __('Created at'))->display(function ($item) {
             $tmDate = Carbon::parse($item);
 
             return $tmDate->format('d.m.Y H:m:i');
         });
-        $grid->column('updated_at', __('Updated at'))->display(function ($item){
+        $grid->column('updated_at', __('Updated at'))->display(function ($item) {
             $tmDate = Carbon::parse($item);
 
             return $tmDate->format('d.m.Y H:m:i');
@@ -51,6 +52,7 @@ class UserController extends AdminController
      * Make a show builder.
      *
      * @param mixed $id
+     *
      * @return Show
      */
     protected function detail($id)
@@ -68,6 +70,7 @@ class UserController extends AdminController
         $show->field('from_ref');
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
+
         return $show;
     }
 
@@ -87,10 +90,18 @@ class UserController extends AdminController
 
         $form->text('name', __('Name'));
         $form->email('email', __('Email'));
-        $form->password('password', __('Password'));
+        $form->password('password', __('Password'))->default(function ($form) {
+            return $form->model()->password;
+        });;
         $form->image('avatar', __('Avatar'));
         $form->image('avatar_original', __('Avatar original'));
         $form->switch('is_agent', 'is Agent')->states($states);
+
+        $form->saving(function (Form $form) {
+            if ($form->password && $form->model()->password != $form->password) {
+                $form->password = Hash::make($form->password);
+            }
+        });
 
         return $form;
     }

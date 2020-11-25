@@ -18,7 +18,7 @@
             <input v-model="email" type="email" name="email" placeholder="Enter your email..." value="" autocomplete="off"/>
           </label>
           <small class="alert-danger">{{ errorMessage }}</small>
-          <button class="form-button">
+          <button class="form-button" :disabled="disabled">
             Reset Password
           </button>
         </form>
@@ -37,7 +37,8 @@ export default {
     return {
       isVisibleIn: this.isVisible,
       email: '',
-      errorMessage: ''
+      errorMessage: '',
+      disabled: false,
     };
   },
   methods: {
@@ -47,18 +48,26 @@ export default {
     },
     sendReset () {
       this.errorMessage = '';
+      this.disabled = true;
+
       if (validateEmail(this.email)) {
         axios.post('/reset-password', { email: this.email }).then(response => {
           this.errorMessage = response.data.message;
 
-          setTimeout(() => this.callback(false), 1000);
+          if(!response.data.error) {
+            setTimeout(() => this.callback(false), 1000);
+          } else {
+            this.disabled = false
+          }
 
         }).catch(resp => {
           this.errorMessage = 'Server Error';
-          setTimeout(() => this.callback(false), 1000);
+
+          setTimeout(() => { this.callback(false); this.disabled = false; }, 3000);
         });
       } else {
         this.errorMessage = 'Invalid Email';
+        this.disabled = false
       }
 
     }

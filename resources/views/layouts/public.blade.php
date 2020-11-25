@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="height: 100%;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,8 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
 
 </head>
-<body>
+<body style="height: 100%; display: flex; flex-direction: column; ">
+<div class="public-content">
 <header class="container-fluid header">
   <div class="container header-logo">
     <a href="{{route('home')}}">
@@ -21,8 +22,16 @@
     </a>
   </div>
 </header>
-<main id="app">
+<main id="app" >
 @yield('content')
 </main>
+</div>
+<footer class="footer container">
+  <div class="footer-container">
+    <a href="#"><img src="/img/fb-icon.svg" alt="Facebook"></a>
+    <a href="#"><img src="/img/tw-icon.svg" alt="Twitter"></a>
+    <a href="#"><img src="/img/hz-icon.svg" alt="Facebook"></a>
+  </div>
+</footer>
 </body>
 </html>

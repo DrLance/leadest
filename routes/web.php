@@ -23,6 +23,9 @@ Route::post('login',[\App\Http\Controllers\Auth\LoginController::class, 'authent
 Route::get('register', [\App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('public.register');
 Route::post('register', [\App\Http\Controllers\UserController::class, 'store'])->name('public.register.store');
 
+Route::get('register/finish', [\App\Http\Controllers\Auth\RegisterController::class, 'registerFinish'])->name('public.register.finish');
+Route::post('register/finish', [\App\Http\Controllers\Auth\RegisterController::class, 'resendVerificationEmail'])->name('public.register.resend');
+
 Route::get('/redirect', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider'])->name('google.auth');
 Route::get('/callback',[\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback'])->name('google.callback');
 
@@ -35,6 +38,7 @@ Route::get('logout', function (){
 Route::post('/reset-password',[\App\Http\Controllers\Auth\ResetPasswordController::class, 'sendEmail'])->name('public.reset_password');
 
 Route::get('password/reset/{token}', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'showForm'])->name('password.reset');
+Route::post('password/reset', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'changePassword'])->name('password.reset.store');
 
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
@@ -44,11 +48,8 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    return redirect()->route('public.register.finish');
 })->middleware(['auth'])->name('verification.notice');
-
-
-
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function (){
     Route::get('/',[\App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard.index');

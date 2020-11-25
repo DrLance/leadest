@@ -20,7 +20,7 @@
         <img src="{{asset('img/leadest-logo.svg')}}" alt="logo"/>
       </a>
       <div class="dashboard-link__container">
-        <a class="lead-link" href="/logout">Welcome, Vitalii <img src="/img/lead-avatar.svg" alt="exit" /></a>
+        <a class="lead-link" href="/logout">Welcome, {{auth()->user()->name}} <img src="/img/lead-avatar.svg" alt="exit" /></a>
       </div>
     </div>
 </header>

@@ -1,6 +1,6 @@
 <template>
   <div class="lead-container">
-    <div class="lead-progress">
+    <div class="lead-progress" v-if="step < 6">
 
       <div class="lead-progress__item finish">
         <span class="lead-progress__title">Start</span>
@@ -56,6 +56,7 @@
     <IWantToComponent v-if="this.step === 3" :callback="answerHandler" :callbackStep="nextStep"></IWantToComponent>
     <SalesComponent v-if="this.step === 4" :callback="answerHandler" :callbackStep="nextStep"></SalesComponent>
     <IWantComponent v-if="this.step === 5" :callback="answerHandler" :callbackStep="nextStep"></IWantComponent>
+    <FinishComponent v-if="this.step === 6" :callback="answerHandler" :callbackStep="nextStep"></FinishComponent>
 
 
   </div>
@@ -67,11 +68,12 @@ import GeneralInfoComponent from "./GeneralInfoComponent";
 import IWantComponent from "./IWantComponent";
 import SalesComponent from "./SalesComponent";
 import IWantToComponent from "./IWantToComponent";
+import FinishComponent from "./FinishComponent";
 
 export default {
   props: ['answerPath'],
   name: "QuestionComponent",
-  components: { IWantToComponent, SalesComponent, IWantComponent, GeneralInfoComponent, IamComponent },
+  components: { FinishComponent, IWantToComponent, SalesComponent, IWantComponent, GeneralInfoComponent, IamComponent },
   data () {
     return {
       step: 1,
@@ -95,7 +97,7 @@ export default {
     step: function (val) {
       if(val === 6) {
         axios.post(this.answerPath, {answers: this.answers}).then(response => {
-          this.step = 1;
+          this.step = 6;
         });
       }
     },

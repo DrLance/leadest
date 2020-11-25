@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <auth-mail-verification :is-visible="showVerification"></auth-mail-verification>
+    <auth-mail-verification v-if="showVerification"></auth-mail-verification>
     <div class="login-container">
       <h2 class="login-header">Sign up for Leadest</h2>
       <div class="container">
@@ -76,10 +76,8 @@ export default {
 
             this.showVerification = true;
 
-            console.log(this.showVerification);
-
             setTimeout(function() {
-              //window.location = data.data.url;
+              window.location = data.data.url;
             }, 1000);
 
           }

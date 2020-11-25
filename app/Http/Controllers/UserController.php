@@ -16,7 +16,7 @@ class UserController extends Controller
           'message' => 'OK',
           'data'    => [
             'errors' => [],
-            'url'    => route('login'),
+            'url'    => route('public.register.finish'),
           ],
         ];
 
@@ -37,6 +37,8 @@ class UserController extends Controller
         }
 
         $user = UserService::createNewUser($request->all());
+
+        auth()->login($user);
 
         return response()->json($responseData);
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" v-if="isVisibleIn">
+  <div class="modal">
 
     <div class="modal-wrapper">
 

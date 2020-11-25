@@ -32,7 +32,7 @@ button {
   cursor: pointer;
   outline: none;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 a {
@@ -104,8 +104,9 @@ input {
   outline: none;
 
   &:focus {
-    border: 1px solid #46B3ED;
+    border: 2px solid #46B3ED;
     box-sizing: border-box;
+    padding: 13px;
   }
 
 }
