@@ -56,7 +56,7 @@
       <h2 class="lead-title">Please, fill in this questionaire to let us understand your business</h2>
       <p>It may take up to 30 minutes to fill it up completely, but it will worth it! New clients!</p>
 
-      <button class="form-button lead-button" onclick="window.location='/leads/questions'">Start</button>
+      <button class="form-button lead-button" onclick="window.location='{{route('leads.questions')}}'">Start</button>
 
     </div>
 

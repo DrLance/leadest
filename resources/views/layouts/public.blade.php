@@ -28,9 +28,9 @@
 </div>
 <footer class="footer container">
   <div class="footer-container">
-    <a href="#"><img src="/img/fb-icon.svg" alt="Facebook"></a>
-    <a href="#"><img src="/img/tw-icon.svg" alt="Twitter"></a>
-    <a href="#"><img src="/img/hz-icon.svg" alt="Facebook"></a>
+    <a href="https://www.facebook.com/leadestpro/" target="_blank"><img src="/img/fb-icon.svg" alt="Facebook"></a>
+    <a href="https://twitter.com/Leadestpro" target="_blank"><img src="/img/tw-icon.svg" alt="Twitter"></a>
+    <a href="https://medium.com/@leadest" target="_blank"><img src="/img/hz-icon.svg" alt="Medium"></a>
   </div>
 </footer>
 </body>

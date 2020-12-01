@@ -5,6 +5,7 @@
       <div class="lead-questions__answer">
         <p>It may take up to 30 minutes to fill it up completely, but it<br/>will worth it! New clients!</p>
       </div>
+      <button @click="continueHandler" class="form-button">Go to the dashboard</button>
     </div>
 
   </div>
@@ -12,26 +13,17 @@
 
 <script>
 export default {
-  props: ['isActive', 'callback', 'callbackStep'],
   name: "FinishComponent",
   data () {
     return {
-      isActiveIn: this.isActive,
-      answer: {},
+
     }
   },
   methods: {
-    answerHandler: function(answer) {
-      const answerObj = {'Sales': answer.currentTarget.textContent };
-
-      this.callback(answerObj);
-    },
     continueHandler: function() {
-      this.callbackStep(5)
+      window.location = '/dashboard'
     },
-    backStep: function() {
-      this.callbackStep(3)
-    }
+
   }
 }
 </script>
@@ -52,4 +44,10 @@ export default {
 .lead-questions__answer p {
   text-align: center;
 }
+
+.lead-questions__container .form-button {
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
 </style>

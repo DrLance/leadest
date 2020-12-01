@@ -133,6 +133,10 @@
   & input {
     margin-top: 6px;
   }
+
+  & select {
+    margin-top: 6px;
+  }
 }
 
 .form-button {

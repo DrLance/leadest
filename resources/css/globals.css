@@ -90,7 +90,7 @@ h2 {
   color: var(--color-dark);
 }
 
-input {
+input, select {
   font-family: var(--font-text);
   border: 1px solid rgba(26, 30, 93, 0.2);
   box-sizing: border-box;
