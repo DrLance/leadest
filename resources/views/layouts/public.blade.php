@@ -21,6 +21,10 @@
       <img src="{{asset('img/leadest-logo.svg')}}" alt="logo"/>
     </a>
   </div>
+  <a class="dashboard-link header-public__support" href="/logout">
+    <img src="/img/support-icon.svg"  alt="settings"/>
+    Support
+  </a>
 </header>
 <main id="app" >
 @yield('content')

@@ -41,12 +41,23 @@
 .header {
   border-bottom: 1px solid #D1D2DF;
   padding: 24px;
+  position: relative;
+
+  & .header-public__support {
+    position: absolute;
+    top: calc(50% - 9px);
+    right: 40px;
+  }
 }
 
 .header-logo {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  & img {
+    vertical-align: middle;
+  }
 }
 
 .login {

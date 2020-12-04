@@ -20,6 +20,11 @@
         <img src="{{asset('img/leadest-logo.svg')}}" alt="logo"/>
       </a>
       <div class="dashboard-link__container">
+        <a class="dashboard-link" href="/logout">
+          <img src="/img/support-icon.svg"  alt="settings"/>
+          Support
+        </a>
+        <span class="dashboard-divider">|</span>
         <a class="lead-link" href="/logout">Welcome, {{auth()->user()->name}} <img src="/img/lead-avatar.svg" alt="exit" /></a>
       </div>
     </div>
