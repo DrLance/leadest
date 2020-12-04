@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <auth-mail-verification v-if="showVerification"></auth-mail-verification>
+    <auth-mail-verification :callback="hideVerificationHandle" v-if="showVerification"></auth-mail-verification>
     <div class="login-container">
       <h2 class="login-header">Sign up for Leadest</h2>
       <div class="container">
@@ -89,8 +89,8 @@ export default {
         this.errors.push('Email not valid');
       }
     },
-    showReset(param) {
-
+    hideVerificationHandle(param) {
+      this.showVerification = param;
     }
   }
 }

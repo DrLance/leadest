@@ -12,8 +12,18 @@
   justify-content: center;
   margin-top: -38px;
 
-  & a:nth-child(2) {
-    margin: 0 26px;
+  & a {
+    display: flex;
+    align-items: center;
+    margin-right: 26px;
+
+    & img {
+      vertical-align: top;
+    }
+  }
+
+  & a:last-child {
+    margin-right: 0;
   }
 }
 

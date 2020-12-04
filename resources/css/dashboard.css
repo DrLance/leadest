@@ -273,3 +273,30 @@ table {
     padding: 14px 24px;
   }
 }
+
+
+.dashboard-header__socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & a {
+    margin-right: 12px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+  }
+
+  & img {
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    fill: #1A1E5D;
+  }
+
+  & svg {
+    fill: #1A1E5D;
+  }
+}

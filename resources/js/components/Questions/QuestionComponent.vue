@@ -64,7 +64,7 @@
     </CheckBoxComponent>
     </div>
 
-    <FinishComponent v-if="step === 5"></FinishComponent>
+    <FinishComponent v-if="step >= 5"></FinishComponent>
 
   </div>
 </template>

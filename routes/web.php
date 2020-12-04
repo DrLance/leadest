@@ -51,7 +51,7 @@ Route::get('/email/verify', function () {
     return redirect()->route('public.register.finish');
 })->middleware(['auth'])->name('verification.notice');
 
-Route::prefix('dashboard')->middleware(['auth'])->group(function (){
+Route::prefix('dashboard')->middleware(['auth', 'is_agent'])->group(function (){
     Route::get('/',[\App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/payments',[\App\Http\Controllers\Dashboard\DashboardController::class, 'payments'])->name('dashboard.payments');
 });

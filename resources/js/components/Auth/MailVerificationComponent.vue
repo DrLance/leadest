@@ -25,17 +25,17 @@
 <script>
 export default {
   props: {
-    isVisible: Boolean,
+    callback: Function,
   },
   name: "MailVerificationComponent",
   data () {
     return {
-      isVisibleIn: this.isVisible,
+
     };
   },
   methods: {
     closeModal () {
-      this.isVisibleIn = false;
+      this.callback(false);
     }
   }
 }

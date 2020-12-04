@@ -31,6 +31,7 @@
                 v-model="inputModels[item.name]"
                 :placeholder="item.placeholder"
                 autocomplete="off"
+                @input="inputChangeHandler(item.mask, item.name)"
             />
           </label>
           <div
@@ -75,10 +76,12 @@
                 autocomplete="off"
 
             >
-              <option selected value="1 year">1 years</option>
-              <option value="2 years">2 years</option>
-              <option value="3 years">3 years</option>
-              <option value="4 years">4 years</option>
+              <option
+                  v-for="option in item.data"
+                  :key="option"
+                  :value="option"
+              >{{option}}
+              </option>
             </select>
           </label>
         </div>
@@ -143,6 +146,11 @@ export default {
     backStep: function () {
       this.callbackStep(this.step - 1 );
     },
+    inputChangeHandler(mask, name) {
+      let filterValue = this.inputModels[name].replace(mask, '');
+      this.inputModels[name] = mask + filterValue;
+      console.log(mask, name);
+    }
   },
 }
 </script>

@@ -28,9 +28,27 @@
 </div>
 <footer class="footer container">
   <div class="footer-container">
-    <a href="https://www.facebook.com/leadestpro/" target="_blank"><img src="/img/fb-icon.svg" alt="Facebook"></a>
-    <a href="https://twitter.com/Leadestpro" target="_blank"><img src="/img/tw-icon.svg" alt="Twitter"></a>
-    <a href="https://medium.com/@leadest" target="_blank"><img src="/img/hz-icon.svg" alt="Medium"></a>
+
+    <a href="https://www.linkedin.com/company/leadestpro" target="_blank">
+      <img src="/img/linkedin-icon.svg" alt="Facebook">
+    </a>
+
+    <a href="https://www.facebook.com/leadestpro/" target="_blank">
+      <img src="/img/fb-icon.svg" alt="Facebook">
+    </a>
+
+    <a href="https://medium.com/@leadest" target="_blank">
+      <img src="/img/hz-icon.svg" alt="Medium">
+    </a>
+
+    <a href="https://twitter.com/Leadestpro" target="_blank">
+      <img src="/img/tw-icon.svg" alt="Twitter">
+    </a>
+
+    <a href="https://t.me/leadest" target="_blank">
+      <img src="/img/tg-icon.svg" alt="Facebook">
+    </a>
+
   </div>
 </footer>
 </body>
