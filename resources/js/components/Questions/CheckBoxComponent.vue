@@ -74,14 +74,13 @@
                 v-model="inputModels[item.name]"
                 :placeholder="item.placeholder"
                 autocomplete="off"
-
             >
               <option
-                  v-for="option in item.data"
-                  :key="option"
+                  v-for="(option, index) in item.data"
                   :value="option"
-              >{{option}}
-              </option>
+                  :key="index"
+                  v-bind:selected="index === 0"
+              >{{option}}</option>
             </select>
           </label>
         </div>
@@ -105,9 +104,27 @@ export default {
       inputModelChild: [],
     }
   },
+  created () {
+    this.items.forEach((item, ind) => {
+      if(item.data && item.data.length) {
+        this.selectChangeHandler(item.name, item.data[0])
+      }
+    });
+  },
+  mounted () {
+    this.answers.forEach((item, ind) => {
+      if(item.selected) {
+        this.answerHandler(ind);
+      }
+
+
+
+    });
+  },
   methods: {
     answerHandler: function (index) {
       this.answers = this.answers.filter((item, ind) => {
+        item.selected = false;
         item.selected = ind === index
         return item
       });
@@ -150,6 +167,9 @@ export default {
       let filterValue = this.inputModels[name].replace(mask, '');
       this.inputModels[name] = mask + filterValue;
       console.log(mask, name);
+    },
+    selectChangeHandler(name, value) {
+      this.inputModels[name] = value;
     }
   },
 }
