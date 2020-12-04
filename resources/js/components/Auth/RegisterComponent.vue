@@ -57,8 +57,6 @@ export default {
   methods: {
     register: function() {
 
-      this.showVerification = true;
-
       this.errors = [];
 
       if(validateEmail(this.email)) {
