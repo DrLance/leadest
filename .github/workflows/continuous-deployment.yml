@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           script: |
-            cd /var/www/coderman.ru/data/www/leadest.coderman.ru
+            cd /var/www/coderman.ru/data/www/lead.coderman.ru
             git pull
             composer install
             php artisan config:cache
